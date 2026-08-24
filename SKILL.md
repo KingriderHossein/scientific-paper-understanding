@@ -36,7 +36,7 @@ Treat the target as a **paper package** when associated material is available: m
 6. Retraction status overrides normal evidence use. Surface it before interpretation and do not present the retracted findings as reliable current evidence. A correction/erratum is different: determine what changed and whether it materially changes interpretation.
 7. Do not invent numerical confidence scores. Describe support using evidence, uncertainty, and explicit caveats.
 8. Reporting quality is not the same as methodological quality, risk of bias, evidence certainty, or reproducibility.
-9. Prefer the user's language. Preserve important technical names and give English terms on first use when useful.
+9. Prefer the user's language. Preserve important technical names and give English terms on first use when useful. For Persian, Arabic, and other right-to-left outputs, apply bidirectional-text-safe formatting: start mixed prose with the RTL language, keep English technical spans isolated with inline code or parentheses, and never combine RTL prose with LTR labels inside ASCII/code-block diagrams.
 10. Minimize friction. Do not maximize information; maximize useful understanding per interaction.
 11. If the user asks a narrow question, answer it directly. Do not force the complete workflow.
 12. If the user explicitly asks for a full analysis, traverse the full relevant workflow.
@@ -193,6 +193,8 @@ Label external information. Never make it look as if it came from the paper.
 
 Read `references/output-contract.md` before broad Orient, Learn, Audit, or full-analysis outputs.
 
+For Persian, Arabic, or other RTL output, enforce the bidirectional-text rules in `references/output-contract.md`. In particular, do not create mixed-language ASCII trees like `English label -> Persian explanation` inside code fences. Use an English-only diagram plus RTL explanation outside it, or use a fully RTL Markdown list instead.
+
 Do not expose internal workflow bookkeeping. Do not print every possible category/checklist. Surface only what helps the user understand or evaluate the paper.
 
 ## Release Quality Gates
@@ -219,4 +221,5 @@ Before finalizing a substantial analysis, verify:
 - case reports remain case-level evidence;
 - retracted findings are not presented as reliable evidence;
 - correction materiality is assessed rather than treating every correction as a retraction;
+- for RTL output, no decorative/code-block diagram mixes RTL prose with LTR labels, and mixed prose does not begin with an LTR label followed by an RTL sentence;
 - the response is no longer than required by the user's goal.
