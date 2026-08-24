@@ -8,7 +8,7 @@
 - Audit
 - Special document-role outputs
 - Full analysis
-- Language
+- Language and RTL/bidirectional formatting
 
 Use these as defaults, not rigid forms.
 
@@ -123,3 +123,47 @@ When explicitly requested, traverse:
 ## Language and Terminology
 
 Use the user's requested language. Preserve model names, genes, packages, metrics, symbols, and other technical identifiers exactly.
+
+### RTL / Bidirectional Text Safety
+
+When the output language is Persian, Arabic, or another right-to-left language, make directionality a formatting requirement, not an afterthought.
+
+1. Start mixed-language prose with the RTL language. Prefer Persian-first wording such as **یادگیری بدون نظارت** (`Unsupervised Learning`). Do not write an English label followed by a colon and then a Persian explanation.
+2. Keep short English technical identifiers isolated with inline code when practical: `Random Forest`, `GEM`, `FBA`, gene names, package names, variables, and metrics.
+3. Never put Persian/Arabic prose and English node labels together inside the same ASCII-art or fenced-code diagram. Monospace blocks are treated as LTR by many clients and will reorder mixed text.
+4. For a diagram in an RTL response, choose one of these two safe forms:
+   - **LTR diagram**: keep the diagram entirely English, then explain or translate each node in RTL prose below it.
+   - **RTL map**: use Markdown bullets or numbered steps outside a code fence, with the RTL label first and the English term in inline code only when needed.
+5. Do not use decorative code fences for Persian prose. Reserve fenced code blocks for actual code, equations/identifiers that require monospace, or English-only ASCII diagrams.
+6. In bilingual headings, put the RTL heading first. Example: **یادگیری نظارت‌شده** (`Supervised Learning`).
+7. In tables, avoid mixing long RTL and LTR sentences in one cell. When terminology matters, use a separate English-term column or put the RTL explanation first.
+8. Keep equations, source code, command lines, file paths, and identifiers LTR. Explain them in a separate RTL sentence instead of appending RTL prose to the same code line.
+9. Use Unicode bidi-isolation marks only as a fallback when structural separation and inline code do not render correctly. Prefer visible structural formatting because it is more portable across ChatGPT, Telegram, GitHub, and other clients.
+10. Before finalizing, scan every mixed-language line. If it starts with an English label and later contains RTL prose, rewrite it so the RTL phrase comes first or split it into separate lines.
+
+#### Safe Paper Map Pattern for Persian
+
+Use an English-only diagram when a compact flow is useful:
+
+```text
+Problem
+  ↓
+Uncertainty
+  ↓
+Ensemble of GEMs
+  ↓
+Gene-knockout simulations
+  ↓
+Unsupervised learning
+  ↓
+Supervised learning
+  ↓
+Important reactions
+```
+
+Then explain it in Persian outside the code block:
+- مسئله (`Problem`): چرا یک GEM واحد برای این سؤال کافی نیست.
+- عدم قطعیت (`Uncertainty`): درباره وجود یا نبود بعضی واکنش‌ها مطمئن نیستیم.
+- مجموعه مدل‌ها (`Ensemble of GEMs`): چند مدل سازگار برای نمایش این عدم قطعیت ساخته می‌شود.
+
+If the user wants the map itself fully in Persian, use a normal Markdown list instead of an ASCII tree.
