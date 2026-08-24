@@ -2,6 +2,23 @@
 
 This file records product-level changes to the Skill. Version numbers follow semantic-versioning intent.
 
+## [1.0.1] - 2026-08-25
+
+### Added
+- Bidirectional-text-safe output rules for Persian, Arabic, and other RTL languages.
+- A portable RTL paper-map pattern: English-only ASCII diagrams with RTL explanation outside the code block, or fully RTL Markdown maps without code fences.
+
+### Changed
+- Bilingual terminology now uses RTL-first phrasing by default, with English technical terms isolated in inline code or parentheses.
+- Output quality gates now explicitly inspect mixed RTL/LTR lines before finalizing.
+
+### Fixed
+- Prevents Persian explanations from being visually reordered when an English label appears first on the same line.
+- Prevents mixed Persian/English ASCII trees and decorative code blocks from producing broken bidirectional layout.
+
+### Evaluation
+- Added regression coverage for the observed Persian + English Paper Map failure pattern, including English-first labels, inline technical terms, and code-block diagrams.
+
 ## [1.0.0] - 2026-08-25
 
 ### Added
