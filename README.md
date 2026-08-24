@@ -1,1 +1,1 @@
-# cientific-paper-understanding
+# Scientific-paper-understanding
