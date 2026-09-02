@@ -1,3 +1,4 @@
 interface:
   display_name: "Scientific Paper Understanding"
   short_description: "Map, learn, and audit one scientific paper"
+  default_prompt: "Help me understand this scientific paper by identifying its document role, source coverage, methods, evidence, claims, limitations, and the next useful learning or audit step."
