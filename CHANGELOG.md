@@ -2,6 +2,24 @@
 
 This file records product-level changes to the Skill. Version numbers follow semantic-versioning intent.
 
+## [1.1.0] - 2026-09-02
+
+### Added
+- Explicit source-access routing for user-provided PDFs/files, DOI/URLs, title-only inputs, abstract/excerpt-only coverage, search snippets, versioned/preprint records, and correction/retraction checks.
+- `references/release-gates.md` as the focused detailed release checklist for substantial and full-paper analyses.
+- Progressive reference routing so type, pedagogy, critical-review, output, and release-gate files are loaded only when relevant.
+- `default_prompt` in `agents/openai.yaml`.
+
+### Changed
+- Refactored `SKILL.md` into a leaner control plane while preserving the existing evidence-boundary and document-identity safeguards.
+- Moved the long detailed release checklist out of the entrypoint to reduce duplicate runtime context.
+- Clarified that search snippets are discovery aids and abstract-only/excerpt-only coverage cannot be presented as a full-paper audit.
+- Clarified primary-source precedence for DOI/URL/title inputs and partial-source behavior when complete text is unavailable.
+- Updated README runtime layout and release version.
+
+### Evaluation
+- This release is an architecture and source-routing refactor of the previously benchmarked core. It does not claim a new 100-paper behavioral benchmark.
+
 ## [1.0.1] - 2026-08-25
 
 ### Added
